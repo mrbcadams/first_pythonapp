@@ -1,0 +1,86 @@
+/* Global Styles */
+.bg-custom-navy {
+   background-color: #23395d !important;
+}
+.bg-custom-navy-gradient {
+   background: linear-gradient(135deg, #17a2b8 0%, #4a6b8a 100%);
+}
+
+/* Animation Effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
+}
+
+.animate-fade-in {
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero Section */
+.scroll-mouse {
+  width: 20px;
+  height: 35px;
+  border: 2px solid rgba(255,255,255,0.8);
+  border-radius: 15px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.scroll-wheel {
+  width: 3px;
+  height: 6px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 2px;
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scroll-wheel 2s infinite;
+}
+
+@keyframes scroll-wheel {
+  0% { opacity: 1; top: 8px; }
+  100% { opacity: 0; top: 20px; }
+}
+
+/* Media Queries */
+@media (max-width: 100%) {
+  .hero-section .container {
+    min-height: 80vh;
+  }
+
+  .display-3 {
+    font-size: 2.5rem;
+  }
+
+  .hero-actions .btn {
+    display: block;
+    margin-bottom: 1rem;
+    margin-right: 0 !important;
+  }
+}
+
+/* Card Styles */
+.card-image:hover .card-overlay {
+  opacity: 0.9;
+}
+
+.card-overlay {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}

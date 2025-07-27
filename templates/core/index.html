@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+{% block title %}Home - Faith Learning Platform{% endblock %}
+
+{% block content %}
+<!-- Hero Section with Full-Width Background and Aligned Content -->
+<section class="hero-section position-relative overflow-hidden">
+  <div class="hero-bg position-absolute w-100 h-100" style="
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 100%);
+      z-index: 1;">
+  </div>
+
+  <div class="hero-overlay position-absolute w-100 h-100" style="
+      background: url('https://chelten.org/wp-content/uploads/2022/12/man-studying-bible.jpg') center/cover no-repeat;
+      mix-blend-mode: overlay;
+      opacity: 0.3;
+      z-index: 2;">
+  </div>
+
+  <div class="position-relative py-5" style="min-height: 70vh; display: flex; align-items: center; z-index: 3;">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 text-white">
+          <div class="hero-content animate-fade-in">
+            <h1 class="display-3 fw-bold mb-4" style="line-height: 1.2;">
+              Transform Your Life Through <span class="text-warning">Faith</span>
+            </h1>
+            <p class="lead mb-4 fs-5" style="opacity: 0.95;">
+              Discover practical, Bible-based solutions to life's challenges.
+              Our courses combine timeless wisdom with modern insights to help you grow spiritually and practically.
+            </p>
+            <div class="hero-verse bg-white bg-opacity-10 p-4 rounded-3 mb-4 border border-white border-opacity-20">
+              <p class="mb-2 fst-italic">"Your word is a lamp for my feet and a light on my path."</p>
+              <cite class="text-warning fw-semibold">— Psalm 119:105 (CSB)</cite>
+            </div>
+            <div class="hero-actions">
+              <a href="#courses" class="btn btn-warning btn-lg px-4 py-3 me-3 fw-semibold rounded-pill shadow-lg">
+                <i class="fas fa-play me-2"></i>Start Learning
+              </a>
+              <a href="#about" class="btn btn-outline-light btn-lg px-4 py-3 rounded-pill">
+                Learn More
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="position-absolute bottom-0 start-50 translate-middle-x mb-4 z-3">
+    <div class="scroll-indicator text-white text-center">
+      <div class="scroll-mouse mb-2">
+        <div class="scroll-wheel"></div>
+      </div>
+      <small>Scroll to explore</small>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-8 text-center">
+        <h2 class="display-5 fw-bold text-dark mb-4">Why Choose Our Platform?</h2>
+        <p class="lead text-muted">Experience faith-based learning that transforms both heart and mind</p>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="feature-card text-center p-4 h-100 bg-white rounded-4 shadow-sm border-0 hover-lift">
+          <div class="feature-icon mb-3">
+            <div class="icon-circle bg-primary bg-opacity-10 d-inline-flex align-items-center justify-content-center rounded-circle"
+                 style="width: 80px; height: 80px;">
+              <i class="fas fa-book-open text-primary fs-2"></i>
+            </div>
+          </div>
+          <h4 class="fw-bold text-primary mb-3">Scripture-Based</h4>
+          <p class="text-muted">Every lesson is grounded in Biblical truth from the CSB translation, ensuring authentic spiritual growth.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-card text-center p-4 h-100 bg-white rounded-4 shadow-sm border-0 hover-lift">
+          <div class="feature-icon mb-3">
+            <div class="icon-circle bg-success bg-opacity-10 d-inline-flex align-items-center justify-content-center rounded-circle"
+                 style="width: 80px; height: 80px;">
+              <i class="fas fa-comments text-success fs-2"></i>
+            </div>
+          </div>
+          <h4 class="fw-bold text-success mb-3">Interactive Learning</h4>
+          <p class="text-muted">Engage with AI-powered chat functionality for personalized guidance and deeper understanding.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-card text-center p-4 h-100 bg-white rounded-4 shadow-sm border-0 hover-lift">
+          <div class="feature-icon mb-3">
+            <div class="icon-circle bg-warning bg-opacity-10 d-inline-flex align-items-center justify-content-center rounded-circle"
+                 style="width: 80px; height: 80px;">
+              <i class="fas fa-seedling text-warning fs-2"></i>
+            </div>
+          </div>
+          <h4 class="fw-bold text-warning mb-3">Personal Growth</h4>
+          <p class="text-muted">Practical courses designed to address real-life challenges with Biblical wisdom and modern insights.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Course Categories Section -->
+<section class="py-5" id="courses">
+  <div class="container">
+    {% for category in categories %}
+    <div class="row justify-content-center mb-4">
+      <div class="col-lg-8 text-center">
+        <h2 class="display-6 fw-bold text-dark mb-3">{{ category.name }}</h2>
+        <p class="lead text-muted">Explore courses in this category</p>
+      </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+      {% for course in category.courses.all %}
+      <div class="col-lg-4 col-md-6">
+        <div class="course-category-card bg-white rounded-4 shadow-sm border-0 overflow-hidden hover-lift h-100">
+          <div class="card-image position-relative">
+            <img src="{{ course.image_url }}"
+                 class="img-fluid w-100" style="height: 200px; object-fit: cover;" alt="{{ course.title }}">
+          </div>
+          <div class="card-body p-4">
+            <h4 class="fw-bold mb-3">{{ course.title }}</h4>
+            <p class="text-muted mb-4">{{ course.description }}</p>
+            {% if course.duration %}
+            <div class="course-stats d-flex justify-content-between text-muted small mb-3">
+              <span><i class="fas fa-clock me-1"></i>{{ course.duration }}</span>
+            </div>
+            {% endif %}
+            <a href="{% url 'course_detail' slug=course.slug %}" class="btn btn-outline-primary w-100 rounded-pill">Explore Course</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- Testimonial Section -->
+<section class="py-5 text-white bg-custom-navy-gradient">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center">
+        <h2 class="display-6 fw-bold mb-4">What Our Students Say</h2>
+        <div class="testimonial-card bg-white bg-opacity-10 p-4 rounded-4 border border-white border-opacity-20">
+          <div class="mb-4">
+            <i class="fas fa-quote-left fs-2 text-warning mb-3"></i>
+            <p class="fs-5 mb-0 fst-italic">"These courses helped me find peace in the midst of life's storms. The Biblical foundation combined with practical application has transformed how I approach challenges."</p>
+          </div>
+          <div class="d-flex align-items-center justify-content-center">
+            <img src="https://source.unsplash.com/60x60/?portrait,smile,person"
+                 class="rounded-circle me-3" alt="Student">
+            <div class="text-start">
+              <h6 class="mb-0 fw-bold">Sarah M.</h6>
+              <small class="text-white-50">Completed 3 courses</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center">
+        <h2 class="display-6 fw-bold text-dark mb-4">Ready to Begin Your Journey?</h2>
+        <p class="lead text-muted mb-4">Join thousands of believers growing in faith and wisdom through our Biblical courses.</p>
+        <div class="cta-actions">
+          <a href="#courses" class="btn btn-primary btn-lg px-5 py-3 me-3 rounded-pill shadow-sm">
+            <i class="fas fa-rocket me-2"></i>Get Started Today
+          </a>
+          <a href="#contact" class="btn btn-outline-secondary btn-lg px-5 py-3 rounded-pill">
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

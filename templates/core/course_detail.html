@@ -1,0 +1,428 @@
+{% extends "base.html" %}
+
+{% block title %}{{ course.title }} - FaithCourses{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <!-- Breadcrumb Navigation -->
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/" class="text-decoration-none">Home</a></li>
+            <li class="breadcrumb-item"><a href="#courses" class="text-decoration-none">Courses</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ course.title|truncatechars:50 }}</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <!-- Main Content Column -->
+        <div class="col-lg-8">
+            <!-- Course Hero Section -->
+            <div class="course-hero mb-5">
+                <h1 class="display-5 fw-bold text-dark mb-3">{{ course.title }}</h1>
+                <p class="lead text-muted mb-4">{{ course.description|truncatewords:15|default:"Unlock the Power of Biblical Wisdom in Daily Life" }}</p>
+
+                <!-- Course Meta Information -->
+                <div class="course-meta d-flex flex-wrap align-items-center mb-4">
+                    <!-- Rating -->
+                    <div class="rating me-4 mb-2">
+                        <div class="stars text-warning me-2">
+                            {% for i in "12345" %}
+                                {% if forloop.counter <= course.rating|default:4 %}
+                                    <i class="fas fa-star"></i>
+                                {% else %}
+                                    <i class="far fa-star"></i>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <span class="text-muted">{{ course.rating|default:"4.5" }} ({{ course.review_count|default:"157" }} reviews)</span>
+                    </div>
+
+                    <!-- Students Enrolled -->
+                    <div class="enrollment me-4 mb-2">
+                        <i class="fas fa-users text-primary me-1"></i>
+                        <span class="text-muted">{{ course.students_enrolled|default:"5,747" }} students</span>
+                    </div>
+
+                    <!-- Certificate -->
+                    <div class="certificate mb-2">
+                        <i class="fas fa-certificate text-warning me-1"></i>
+                        <span class="text-muted">Certificate</span>
+                    </div>
+                </div>
+
+                <!-- Instructor Info -->
+                <div class="instructor-info d-flex align-items-center mb-4">
+                    <img src="{{ course.instructor.avatar_url|default:'https://source.unsplash.com/60x60/?pastor,teacher,person' }}"
+                         class="rounded-circle me-3" width="50" height="50" alt="Instructor">
+                    <div>
+                        <div class="fw-semibold">{{ course.instructor.name|default:"Pastor David R." }}</div>
+                        <small class="text-muted">{{ course.instructor.title|default:"Lead Pastor, Designer at FaithCourses" }}</small>
+                    </div>
+                </div>
+
+                <!-- Add to Wishlist -->
+                <div class="wishlist mb-4">
+                    <a href="#" class="text-decoration-none">
+                        <i class="far fa-heart me-1"></i> Add to Wishlist
+                    </a>
+                </div>
+            </div>
+
+            <!-- Course Overview Section -->
+            <div class="course-overview mb-5">
+                <h2 class="h3 fw-bold mb-4">Course Overview</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4 class="h5 fw-semibold mb-3">What You'll Learn:</h4>
+                        <ul class="list-unstyled">
+                            {% if course.learning_outcomes %}
+                                <li class="mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    {{ course.learning_outcomes|linebreaks }}
+                                </li>
+                            {% else %}
+                                <li class="mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    Cultivate practical faith for daily challenges
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    Use prayer patterns to generate better outcomes
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    Apply Biblical wisdom, timing, and productivity
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    Understand prayer as spiritual communication
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    Automate workflows using biblical thinking
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="h5 fw-semibold mb-3">Who This Course Is For:</h4>
+                        <ul class="list-unstyled">
+                            {% if course.target_audience %}
+                                <li class="mb-2">
+                                    <i class="fas fa-user text-primary me-2"></i>
+                                    {{ course.target_audience|linebreaks }}
+                                </li>
+                            {% else %}
+                                <li class="mb-2">
+                                    <i class="fas fa-user text-primary me-2"></i>
+                                    Beginners to intermediate believers
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-user text-primary me-2"></i>
+                                    Current creators & ministers
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-user text-primary me-2"></i>
+                                    Designers exploring faith
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-user text-primary me-2"></i>
+                                    Developers building prayer-based apps
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-user text-primary me-2"></i>
+                                    Anyone seeking spiritual efficiency
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Syllabus Section -->
+            <div class="course-syllabus mb-5">
+                <h2 class="h3 fw-bold mb-4">Course Syllabus</h2>
+                <div class="syllabus-stats mb-4">
+                    <span class="badge bg-primary me-2">{{ course.total_weeks|default:"4" }} Weeks</span>
+                    <span class="badge bg-secondary me-2">{{ course.total_lessons|default:"12" }} Lessons</span>
+                    <span class="badge bg-info">{{ course.total_hours|default:"3" }} Hours</span>
+                </div>
+
+                <div class="accordion" id="syllabusAccordion">
+                    <!-- Week 1 -->
+                    <div class="accordion-item border-0 shadow-sm mb-3">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#week1" aria-expanded="true" aria-controls="week1">
+                                <div class="w-100">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="fw-semibold">Week 1: Introduction to Biblical Living</span>
+                                        <small class="text-muted">3 lessons • 45 min</small>
+                                    </div>
+                                    <div class="text-muted small mt-1">Learn the foundations of how present Scripture into all aspects.</div>
+                                </div>
+                            </button>
+                        </h2>
+                        <div id="week1" class="accordion-collapse collapse show" data-bs-parent="#syllabusAccordion">
+                            <div class="accordion-body">
+                                <div class="lesson-item d-flex justify-content-between align-items-center py-2 border-bottom">
+                                    <span><i class="fas fa-play-circle text-primary me-2"></i>How AI Integrates with Faith</span>
+                                    <small class="text-muted">15 min</small>
+                                </div>
+                                <div class="lesson-item d-flex justify-content-between align-items-center py-2 border-bottom">
+                                    <span><i class="fas fa-play-circle text-primary me-2"></i>The Structure of Biblical Prayer</span>
+                                    <small class="text-muted">20 min</small>
+                                </div>
+                                <div class="lesson-item d-flex justify-content-between align-items-center py-2">
+                                    <span><i class="fas fa-play-circle text-primary me-2"></i>Faith Practices Hands-On</span>
+                                    <small class="text-muted">10 min</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Week 2 -->
+                    <div class="accordion-item border-0 shadow-sm mb-3">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#week2" aria-expanded="false" aria-controls="week2">
+                                <div class="w-100">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="fw-semibold">Week 2: Prompting for Productivity & Creativity</span>
+                                        <small class="text-muted">3 lessons • 50 min</small>
+                                    </div>
+                                    <div class="text-muted small mt-1">Advanced spiritual discipline practices and daily application.</div>
+                                </div>
+                            </button>
+                        </h2>
+                        <div id="week2" class="accordion-collapse collapse" data-bs-parent="#syllabusAccordion">
+                            <div class="accordion-body">
+                                <div class="lesson-item d-flex justify-content-between align-items-center py-2 border-bottom">
+                                    <span><i class="fas fa-play-circle text-primary me-2"></i>Scripture Meditation Techniques</span>
+                                    <small class="text-muted">20 min</small>
+                                </div>
+                                <div class="lesson-item d-flex justify-content-between align-items-center py-2 border-bottom">
+                                    <span><i class="fas fa-play-circle text-primary me-2"></i>Creative Prayer Methods</span>
+                                    <small class="text-muted">15 min</small>
+                                </div>
+                                <div class="lesson-item d-flex justify-content-between align-items-center py-2">
+                                    <span><i class="fas fa-play-circle text-primary me-2"></i>Productivity Through Faith</span>
+                                    <small class="text-muted">15 min</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Week 3 -->
+                    <div class="accordion-item border-0 shadow-sm mb-3">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#week3" aria-expanded="false" aria-controls="week3">
+                                <div class="w-100">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="fw-semibold">Week 3: Advanced Prompting Techniques</span>
+                                        <small class="text-muted">3 lessons • 45 min</small>
+                                    </div>
+                                    <div class="text-muted small mt-1">Refine your skills with complex and multi-step strategies.</div>
+                                </div>
+                            </button>
+                        </h2>
+                        <div id="week3" class="accordion-collapse collapse" data-bs-parent="#syllabusAccordion">
+                            <div class="accordion-body">
+                                <p class="text-muted">Content for Week 3 lessons will be displayed here...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Week 4 -->
+                    <div class="accordion-item border-0 shadow-sm mb-3">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#week4" aria-expanded="false" aria-controls="week4">
+                                <div class="w-100">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="fw-semibold">Week 4: Real-World Projects & Final Task</span>
+                                        <small class="text-muted">3 lessons • 60 min</small>
+                                    </div>
+                                    <div class="text-muted small mt-1">Apply everything you've learned in practical scenarios.</div>
+                                </div>
+                            </button>
+                        </h2>
+                        <div id="week4" class="accordion-collapse collapse" data-bs-parent="#syllabusAccordion">
+                            <div class="accordion-body">
+                                <p class="text-muted">Content for Week 4 lessons will be displayed here...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instructor Section -->
+            <div class="instructor-section mb-5">
+                <h2 class="h3 fw-bold mb-4">Instructor</h2>
+                <div class="instructor-card bg-light p-4 rounded-3">
+                    <div class="row align-items-center">
+                        <div class="col-md-3 text-center mb-3 mb-md-0">
+                            <img src="{{ course.instructor.avatar_url|default:'https://source.unsplash.com/120x120/?pastor,teacher,person' }}"
+                                 class="rounded-circle mb-3" width="100" height="100" alt="Instructor">
+                            <h5 class="fw-bold mb-1">{{ course.instructor.name|default:"David R." }}</h5>
+                            <p class="text-muted small mb-0">{{ course.instructor.title|default:"Lead Pastor, Teacher at FaithCourses" }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="instructor-stats mb-3">
+                                <div class="row text-center">
+                                    <div class="col-4">
+                                        <div class="fw-bold">{{ course.instructor.total_courses|default:"10" }}</div>
+                                        <small class="text-muted">Courses</small>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="fw-bold">{{ course.instructor.total_students|default:"15,342" }}</div>
+                                        <small class="text-muted">Reviews</small>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="fw-bold">{{ course.instructor.total_students|default:"15,342" }}</div>
+                                        <small class="text-muted">Students</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-muted mb-0">{{ course.instructor.bio|default:"Experienced pastor and teacher with over 15 years in ministry, specializing in practical Biblical application for modern life challenges." }}</p>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <a href="#" class="btn btn-outline-primary">View Instructor Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar Column -->
+        <div class="col-lg-4">
+            <div class="course-sidebar sticky-top" style="top: 100px;">
+                <div class="card border-0 shadow">
+                    <!-- Course Image -->
+                    <img src="{{ course.image_url }}" class="card-img-top rounded-top" alt="{{ course.title }}" style="height: 200px; object-fit: cover;">
+
+                    <div class="card-body">
+                        <!-- Pricing -->
+                        <div class="pricing mb-4">
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="h3 fw-bold text-primary mb-0">${{ course.price|default:"49" }}</span>
+                                {% if course.original_price %}
+                                    <span class="text-muted text-decoration-line-through ms-2">${{ course.original_price|default:"99" }}</span>
+                                {% endif %}
+                            </div>
+                            <p class="text-muted small mb-0">Price will end at {{ course.price_end_date|default:"17:52" }}</p>
+                        </div>
+
+                        <!-- CTA Buttons -->
+                        <div class="cta-buttons mb-4">
+                            <button class="btn btn-primary w-100 mb-2 py-3">
+                                <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                            </button>
+                            <button class="btn btn-outline-secondary w-100">Enroll Now</button>
+                        </div>
+
+                        <!-- What You'll Get -->
+                        <div class="course-includes mb-4">
+                            <h6 class="fw-bold mb-3">What You'll Get</h6>
+                            <ul class="list-unstyled">
+                                <li class="mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    Lifetime access to {{ course.total_lessons|default:"12" }} video lessons
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    Practice templates & real-world case studies
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    AI-powered chat for personalized guidance
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    Certificate of completion
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Use Coupon -->
+                        <div class="coupon-section">
+                            <div class="d-grid">
+                                <button class="btn btn-link text-start p-0" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#couponCollapse" aria-expanded="false" aria-controls="couponCollapse">
+                                    <i class="fas fa-tag me-2"></i>Use Coupon
+                                    <i class="fas fa-chevron-down float-end mt-1"></i>
+                                </button>
+                            </div>
+                            <div class="collapse mt-3" id="couponCollapse">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Enter coupon code">
+                                    <button class="btn btn-outline-primary" type="button">Apply</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Custom styles for course detail page */
+.course-meta {
+    font-size: 0.9rem;
+}
+
+.stars i {
+    font-size: 0.9rem;
+}
+
+.instructor-info img {
+    object-fit: cover;
+}
+
+.lesson-item {
+    font-size: 0.9rem;
+}
+
+.lesson-item:last-child {
+    border-bottom: none !important;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+}
+
+.accordion-button:focus {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.course-sidebar {
+    z-index: 1020;
+}
+
+@media (max-width: 991.98px) {
+    .course-sidebar {
+        position: relative !important;
+        top: auto !important;
+    }
+}
+
+.pricing {
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 1rem;
+}
+
+.course-includes {
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 1rem;
+}
+
+.instructor-card {
+    border: 1px solid #dee2e6;
+}
+</style>
+{% endblock %}
