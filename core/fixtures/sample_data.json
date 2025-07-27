@@ -1,0 +1,211 @@
+[
+{
+  "model": "core.category",
+  "pk": 1,
+  "fields": {
+    "name": "Christian Living",
+    "slug": "christian-living"
+  }
+},
+{
+  "model": "core.category",
+  "pk": 2,
+  "fields": {
+    "name": "Foundations of Faith",
+    "slug": "foundations-of-faith"
+  }
+},
+{
+  "model": "core.category",
+  "pk": 3,
+  "fields": {
+    "name": "Spiritual Growth",
+    "slug": "spiritual-growth"
+  }
+},
+{
+  "model": "core.category",
+  "pk": 4,
+  "fields": {
+    "name": "Evangelism and Discipleship",
+    "slug": "evangelism-and-discipleship"
+  }
+},
+{
+  "model": "core.category",
+  "pk": 5,
+  "fields": {
+    "name": "Relationships and Family",
+    "slug": "relationships-and-family"
+  }
+},
+{
+  "model": "core.category",
+  "pk": 6,
+  "fields": {
+    "name": "Spiritual Disciplines",
+    "slug": "spiritual-disciplines"
+  }
+},
+{
+  "model": "core.course",
+  "pk": 1,
+  "fields": {
+    "title": "Tools for Christian Living",
+    "slug": "tools-for-christian-living",
+    "description": "Practical biblical principles for daily living.\t\r\n\r\nJames 1:22-25 (CSB) - “But be doers of the word and not hearers only, deceiving yourselves.”",
+    "image_url": "https://media.istockphoto.com/id/1456438531/photo/man-reading-the-bible.webp?s=2048x2048&w=is&k=20&c=faHepmZysYv6HtpKGITZxcCw-XoHO9tUSG1_x-gW2Hs=",
+    "duration": "6-8 Hours",
+    "category": 1,
+    "subtitle": "Facing and solving life's daily challenges with faith.",
+    "price": "49.00",
+    "original_price": "119.00",
+    "rating": 4.0,
+    "review_count": 23,
+    "students_enrolled": 524,
+    "total_weeks": 4,
+    "total_lessons": 12,
+    "total_hours": 8,
+    "learning_outcomes": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a fermentum velit, nec posuere ligula. Integer eleifend dolor nisl, nec pulvinar ligula porta quis. Nam tincidunt enim ac mi cursus, nec iaculis tortor pharetra. Etiam ut elementum massa, id condimentum nisi. Donec sit amet metus ut nisi euismod varius sed ac lectus. Nullam ornare arcu ipsum, lacinia mollis felis pretium sed. Nullam non dictum diam, at sagittis justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus elementum hendrerit eleifend. In magna nisi, molestie at turpis eu, commodo finibus mi. Cras elit odio, luctus nec orci vel, tincidunt efficitur nisl. Vivamus gravida sem velit, eget tristique lacus feugiat aliquet.",
+    "target_audience": "adfasfsda\r\nadfasdfa\r\nadfasdfsad\r\nadsfasdfsda"
+  }
+},
+{
+  "model": "core.course",
+  "pk": 2,
+  "fields": {
+    "title": "The Foundations of Faith",
+    "slug": "the-foundations-of-faith",
+    "description": "Understanding the core beliefs of the Christian faith.\t\r\n\r\nHebrews 11:1 (CSB) - “Now faith is the reality of what is hoped for, the proof of what is not seen.”",
+    "image_url": "https://media.istockphoto.com/id/1447608173/photo/christian-wooden-cross-on-sunset-background.webp?s=2048x2048&w=is&k=20&c=Rc5eSgfpsybRW4CoGjWkTd64USXEn1sHCBy_210-bD8=",
+    "duration": "4-6 Hours",
+    "category": 2,
+    "subtitle": "",
+    "price": "49.00",
+    "original_price": null,
+    "rating": 0.0,
+    "review_count": 0,
+    "students_enrolled": 0,
+    "total_weeks": 4,
+    "total_lessons": 12,
+    "total_hours": 3,
+    "learning_outcomes": "empty",
+    "target_audience": "empty"
+  }
+},
+{
+  "model": "core.course",
+  "pk": 3,
+  "fields": {
+    "title": "Navigating Emotions with Faith",
+    "slug": "navigating-emotions-with-faith",
+    "description": "Managing emotions like fear, anxiousness, anger, jealously, bitterness, sadness, regret, and sorrow through faith.\t\r\n\r\nPsalm 34:18 (CSB) - “The Lord is near the brokenhearted; he saves those crushed in spirit.”",
+    "image_url": "https://media.istockphoto.com/id/1464545533/photo/middle-aged-woman-in-tearful-prayer.jpg?s=2048x2048&w=is&k=20&c=ToX6C9KQ18Idf0aDxyV9NcPfTmHQZs0Dfb346wKd1eg=",
+    "duration": "3-4 Hours",
+    "category": 3,
+    "subtitle": "",
+    "price": "49.00",
+    "original_price": null,
+    "rating": 0.0,
+    "review_count": 0,
+    "students_enrolled": 0,
+    "total_weeks": 4,
+    "total_lessons": 12,
+    "total_hours": 3,
+    "learning_outcomes": "empty",
+    "target_audience": "empty"
+  }
+},
+{
+  "model": "core.course",
+  "pk": 4,
+  "fields": {
+    "title": "Sharing Your Faith",
+    "slug": "sharing-your-faith",
+    "description": "Evangelism and witnessing in everyday life.\t\r\n\r\nMatthew 28:19-20 (CSB) - “Go, therefore, and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit, teaching them to observe everything I have commanded you.”",
+    "image_url": "https://www.trainyourselfministry.com/wp-content/uploads/2020/02/evangelism.jpg",
+    "duration": "1-2 Hours",
+    "category": 4,
+    "subtitle": "",
+    "price": "49.00",
+    "original_price": null,
+    "rating": 0.0,
+    "review_count": 0,
+    "students_enrolled": 0,
+    "total_weeks": 4,
+    "total_lessons": 12,
+    "total_hours": 3,
+    "learning_outcomes": "empty",
+    "target_audience": "empty"
+  }
+},
+{
+  "model": "core.course",
+  "pk": 5,
+  "fields": {
+    "title": "Marriage Built to Last",
+    "slug": "marriage-built-to-last",
+    "description": "Strengthening marriages based on biblical principles.\t\r\n\r\nEphesians 4:32: \"Be kind and compassionate to one another, forgiving each other, just as in Christ God forgave you.\"",
+    "image_url": "https://cdn.thrivingmarriages.com/wp-content/uploads/2021/05/christian-marriage.jpg",
+    "duration": "4-6 Hours",
+    "category": 5,
+    "subtitle": "",
+    "price": "49.00",
+    "original_price": null,
+    "rating": 0.0,
+    "review_count": 0,
+    "students_enrolled": 0,
+    "total_weeks": 4,
+    "total_lessons": 12,
+    "total_hours": 3,
+    "learning_outcomes": "empty",
+    "target_audience": "empty"
+  }
+},
+{
+  "model": "core.course",
+  "pk": 6,
+  "fields": {
+    "title": "The Power of Prayer",
+    "slug": "the-power-of-prayer",
+    "description": "Through prayer, Christians can deepen their understanding of faith.\r\n\r\nPhilippians 4:6 - \"Do not be anxious about anything, but in everything by prayer and supplication with thanksgiving let your requests be made known to God.\"",
+    "image_url": "https://media.istockphoto.com/id/523689060/photo/prayer-in-the-morning-in-a-beautiful-sunrise.webp?s=2048x2048&w=is&k=20&c=3PTlbYbNd3MQl7kZhnkCiRsIvv39cfrJbUepED8GD-8=",
+    "duration": "3-4 Hours",
+    "category": 6,
+    "subtitle": "",
+    "price": "49.00",
+    "original_price": null,
+    "rating": 0.0,
+    "review_count": 0,
+    "students_enrolled": 0,
+    "total_weeks": 4,
+    "total_lessons": 12,
+    "total_hours": 3,
+    "learning_outcomes": "empty",
+    "target_audience": "empty"
+  }
+},
+{
+  "model": "core.course",
+  "pk": 7,
+  "fields": {
+    "title": "Tools for the Workplace",
+    "slug": "tools-for-the-workplace",
+    "description": "TBD",
+    "image_url": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fnextlevelcalling.org%2Fwp-content%2Fuploads%2F2023%2F07%2Fchristian-leadership-in-the-workplace.jpg&f=1&nofb=1&ipt=a22ca5f0d381e5493f0c38255",
+    "duration": "2-3 Hours",
+    "category": 1,
+    "subtitle": "Living with faith in a multi-cultural work environment.",
+    "price": "29.00",
+    "original_price": "49.00",
+    "rating": 0.0,
+    "review_count": 0,
+    "students_enrolled": 0,
+    "total_weeks": 4,
+    "total_lessons": 12,
+    "total_hours": 3,
+    "learning_outcomes": "Learning",
+    "target_audience": "Employees"
+  }
+}
+]
